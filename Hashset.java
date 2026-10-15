@@ -1,46 +1,40 @@
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Set;
 
 public class HashSetExample {
     public static void main(String[] args) {
-        // 1. Initialize a HashSet of Strings
-        HashSet<String> programmingLanguages = new HashSet<>();
+        // 1. Create a HashSet of Strings
+        Set<String> fruitSet = new HashSet<>();
 
-        // 2. Add elements using the add() method
-        programmingLanguages.add("Java");
-        programmingLanguages.add("Python");
-        programmingLanguages.add("JavaScript");
-        programmingLanguages.add("C++");
+        // 2. Add elements using add()
+        fruitSet.add("Apple");
+        fruitSet.add("Banana");
+        fruitSet.add("Orange");
 
-        // 3. Attempt to add a duplicate element
-        // This will return 'false' and will be ignored because sets only allow unique items.
-        boolean isAdded = programmingLanguages.add("Java"); 
-        System.out.println("Was duplicate 'Java' added? " + isAdded); // Output: false
+        // 3. Try to add a duplicate element (will be ignored)
+        boolean isAdded = fruitSet.add("Apple"); 
+        System.out.println("Was second 'Apple' added? " + isAdded); // Outputs: false
 
-        // 4. Print the entire HashSet
-        // Note: The output order will likely differ from the insertion order.
-        System.out.println("Initial HashSet: " + programmingLanguages);
-
-        // 5. Check if an item exists using contains()
-        if (programmingLanguages.contains("Python")) {
-            System.out.println("Python is in the set.");
+        // 4. Check if an item exists using contains()
+        if (fruitSet.contains("Banana")) {
+            System.out.println("Banana is in the set.");
         }
 
-        // 6. Remove an item using remove()
-        programmingLanguages.remove("C++");
-        System.out.println("After removing C++: " + programmingLanguages);
+        // 5. Check the size of the set
+        System.out.println("Total elements: " + fruitSet.size());
 
-        // 7. Get the total count of unique items using size()
-        System.out.println("Total elements in set: " + programmingLanguages.size());
-
-        // 8. Iterate over the HashSet using a For-Each loop
-        System.out.println("\n--- Iterating using For-Each Loop ---");
-        for (String language : programmingLanguages) {
-            System.out.println(language);
+        // 6. Iterate over the elements (Note: Order is not guaranteed)
+        System.out.println("\nIterating through HashSet:");
+        for (String fruit : fruitSet) {
+            System.out.println("- " + fruit);
         }
 
-        // 9. Clear all elements from the set
-        programmingLanguages.clear();
-        System.out.println("Is the set empty now? " + programmingLanguages.isEmpty());
+        // 7. Remove an element using remove()
+        fruitSet.remove("Orange");
+        System.out.println("\nAfter removing Orange: " + fruitSet);
+
+        // 8. Clear all elements
+        fruitSet.clear();
+        System.out.println("Is the set empty now? " + fruitSet.isEmpty());
     }
 }
