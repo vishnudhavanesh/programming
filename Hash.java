@@ -1,38 +1,33 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Hashtable;
+import java.util.Map;
 
-public class HashSetExample {
+public class BuiltInHashtableExample {
     public static void main(String[] args) {
-        // 1. Create a HashSet (Best practice uses the Set interface reference)
-        Set<String> brands = new HashSet<>();
+        // 1. Initialize a Hashtable with Integer keys and String values
+        Hashtable<Integer, String> employeeTable = new Hashtable<>();
 
-        // 2. Add elements using add()
-        brands.add("Apple");
-        brands.add("Samsung");
-        brands.add("Google");
+        // 2. Add elements using put()
+        employeeTable.put(101, "Alice");
+        employeeTable.put(102, "Bob");
+        employeeTable.put(103, "Charlie");
 
-        // Adding a duplicate item (This will be ignored)
-        brands.add("Apple");
+        // Note: Attempting to insert null key or value throws NullPointerException
+        // employeeTable.put(null, "Error"); 
 
-        // 3. Check if an item exists using contains()
-        if (brands.contains("Google")) {
-            System.out.println("Google is in the set.");
-        }
+        // 3. Retrieve an element using get()
+        String employeeName = employeeTable.get(102);
+        System.out.println("Employee with ID 102: " + employeeName);
 
-        // 4. Check the size of the set
-        System.out.println("Total elements: " + brands.size());
+        // 4. Update an element by reusing the same key
+        employeeTable.put(101, "Alice Smith");
 
         // 5. Remove an element using remove()
-        brands.remove("Samsung");
+        employeeTable.remove(103);
 
-        // 6. Iterate through the set using an enhanced for-loop
-        System.out.println("Remaining items in the set:");
-        for (String brand : brands) {
-            System.out.println(brand);
+        // 6. Iterate through the Hashtable using entrySet()
+        System.out.println("\n--- Current Employee Directory ---");
+        for (Map.Entry<Integer, String> entry : employeeTable.entrySet()) {
+            System.out.println("ID: " + entry.getKey() + ", Name: " + entry.getValue());
         }
-
-        // 7. Clear all items
-        brands.clear();
-        System.out.println("Is the set empty? " + brands.isEmpty());
     }
 }
